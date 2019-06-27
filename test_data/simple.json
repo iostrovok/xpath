@@ -1,0 +1,53 @@
+{
+    "bookstore": {
+        "book": {
+            "title": {
+                "lang": "en",
+                "value": "Everyday Italian"
+            },
+            "price": 30.00,
+            "category": "cooking",
+            "author": "Giada De Laurentiis",
+            "year": 2005
+        }
+    },
+    "cycle-1": [
+        1, 2, 3
+    ],
+    "cycle-2": [{
+            "book": "Everyday Norwegian"
+        },
+        {
+            "book": "Everyday French"
+        },
+        {
+            "book": "Everyday Spanish"
+        }
+    ],
+    "cycle-3": [{
+            "book": ["Everyday Norwegian"]
+        },
+        {
+            "book": ["Everyday French"]
+        },
+        {
+            "book": ["Everyday Spanish"]
+        }
+    ],
+    "cycle-4": [{
+            "book": [{
+                "title": "Everyday Norwegian"
+            }]
+        },
+        {
+            "book": [{
+                "title": "Everyday French"
+            }]
+        },
+        {
+            "book": [{
+                "title": "Everyday Spanish"
+            }]
+        }
+    ]
+}
