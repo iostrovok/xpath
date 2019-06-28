@@ -20,6 +20,10 @@ var _ = Suite(&testPG{})
 
 func TestService(t *testing.T) { TestingT(t) }
 
+func skipAll(c *C, reason string) {
+	// c.Skip("skipAll " + reason)
+}
+
 func LoadFile(c *C, file string) []byte {
 
 	jsonBlob, err := ioutil.ReadFile(file)
@@ -43,6 +47,7 @@ func load(c *C, file string) IXPath {
 
 func (s *testPG) TestSimple01(c *C) {
 	// c.Skip("no reason")
+	skipAll(c, "bookstore/book/title/lang")
 
 	path := "bookstore/book/title/lang"
 	expected := "en"
@@ -57,6 +62,7 @@ func (s *testPG) TestSimple01(c *C) {
 
 func (s *testPG) TestSimple02(c *C) {
 	// c.Skip("no reason")
+	skipAll(c, "cycle-1")
 
 	expected := []interface{}{1.0, 2.0, 3.0}
 	path := "cycle-1"
@@ -71,6 +77,7 @@ func (s *testPG) TestSimple02(c *C) {
 
 func (s *testPG) TestSimple03(c *C) {
 	// c.Skip("no reason")
+	skipAll(c, "cycle-2/book")
 
 	expected := []interface{}{"Everyday Norwegian", "Everyday French", "Everyday Spanish"}
 	path := "cycle-2/book"
@@ -84,7 +91,8 @@ func (s *testPG) TestSimple03(c *C) {
 }
 
 func (s *testPG) TestSimple04(c *C) {
-	// c.Skip("no reason")
+	c.Skip("no reason")
+	skipAll(c, "cycle-3/book")
 
 	expected := []interface{}{[]interface{}{"Everyday Norwegian"}, []interface{}{"Everyday French"}, []interface{}{"Everyday Spanish"}}
 	path := "cycle-3/book"
@@ -98,7 +106,8 @@ func (s *testPG) TestSimple04(c *C) {
 }
 
 func (s *testPG) TestSimple05(c *C) {
-	// c.Skip("no reason")
+	c.Skip("no reason")
+	skipAll(c, "cycle-4/book/title")
 
 	expected := []interface{}{"Everyday Norwegian", "Everyday French", "Everyday Spanish"}
 	path := "cycle-4/book/title"
@@ -111,8 +120,39 @@ func (s *testPG) TestSimple05(c *C) {
 	c.Assert(res, DeepEquals, expected)
 }
 
+func (s *testPG) TestSimple06(c *C) {
+	// c.Skip("no reason")
+	skipAll(c, "cycle-5/allbooks/titles")
+
+	expected := []interface{}{[]interface{}{"Everyday Norwegian", "Everyday French", "Everyday Spanish"}}
+	path := "cycle-5/allbooks/titles"
+
+	xp := load(c, file2)
+	res, err := xp.Get(path)
+	c.Assert(err, IsNil)
+	c.Assert(res, NotNil)
+
+	c.Assert(res, DeepEquals, expected)
+}
+
+func (s *testPG) TestSimple07(c *C) {
+	// c.Skip("no reason")
+	skipAll(c, "cycle-5/allbooks[0]/titles")
+
+	expected := []interface{}{"Everyday Norwegian", "Everyday French", "Everyday Spanish"}
+	path := "cycle-5/allbooks[0]/titles"
+
+	xp := load(c, file2)
+	res, err := xp.Get(path)
+	c.Assert(err, IsNil)
+	c.Assert(res, NotNil)
+
+	c.Assert(res, DeepEquals, expected)
+}
+
 func (s *testPG) TestBook01(c *C) {
 	// c.Skip("no reason")
+	skipAll(c, "/bookstore/book/title/value")
 
 	expected := []interface{}{"Everyday Italian", "Harry Potter", "XQuery Kick Start", "Learning XML"}
 	path := "/bookstore/book/title/value"
@@ -126,7 +166,8 @@ func (s *testPG) TestBook01(c *C) {
 }
 
 func (s *testPG) TestBook02(c *C) {
-	// c.Skip("no reason")
+	c.Skip("no reason")
+	skipAll(c, "/bookstore/book[0]/title/value")
 
 	expected := []interface{}{"Everyday Italian"}
 	path := "/bookstore/book[0]/title/value"
@@ -140,6 +181,7 @@ func (s *testPG) TestBook02(c *C) {
 
 func (s *testPG) TestBook03(c *C) {
 	c.Skip("/bookstore/book[price>35]/title/value")
+	skipAll(c, "/bookstore/book[price>35]/title/value")
 
 	expected := []interface{}{"XQuery Kick Start", "Learning XML"}
 	path := "/bookstore/book[price>35]/title/value"
@@ -156,6 +198,7 @@ func (s *testPG) TestBook03(c *C) {
 
 func (s *testPG) TestBook04(c *C) {
 	c.Skip("//title/value | //price...")
+	skipAll(c, "//title/value | //price...")
 
 	paths := []string{
 		"//title/value | //price",
@@ -186,6 +229,7 @@ func (s *testPG) TestBook04(c *C) {
 
 func (s *testPG) TestBook05(c *C) {
 	c.Skip("//title/value | //price...")
+	skipAll(c, "//title/value | //price...")
 
 	path := "//*"
 

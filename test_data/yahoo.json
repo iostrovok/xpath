@@ -1,0 +1,115 @@
+{
+    "chart": {
+        "result": [{
+            "meta": {
+                "currency": "USD",
+                "symbol": "^DJI",
+                "exchangeName": "DJI",
+                "instrumentType": "INDEX",
+                "firstTradeDate": 475837200,
+                "gmtoffset": -14400,
+                "timezone": "EDT",
+                "exchangeTimezoneName": "America/New_York",
+                "chartPreviousClose": 26112.53,
+                "previousClose": 26465.5,
+                "scale": 3,
+                "priceHint": 2,
+                "currentTradingPeriod": {
+                    "pre": {
+                        "timezone": "EDT",
+                        "start": 1560931200,
+                        "end": 1560951000,
+                        "gmtoffset": -14400
+                    },
+                    "regular": {
+                        "timezone": "EDT",
+                        "start": 1560951000,
+                        "end": 1560974400,
+                        "gmtoffset": -14400
+                    },
+                    "post": {
+                        "timezone": "EDT",
+                        "start": 1560974400,
+                        "end": 1560988800,
+                        "gmtoffset": -14400
+                    }
+                },
+                "tradingPeriods": {
+                    "pre": [
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560758400,
+                            "end": 1560778200,
+                            "gmtoffset": -14400
+                        }],
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560844800,
+                            "end": 1560864600,
+                            "gmtoffset": -14400
+                        }],
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560931200,
+                            "end": 1560951000,
+                            "gmtoffset": -14400
+                        }]
+                    ],
+                    "post": [
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560801600,
+                            "end": 1560816000,
+                            "gmtoffset": -14400
+                        }],
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560888000,
+                            "end": 1560902400,
+                            "gmtoffset": -14400
+                        }],
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560974400,
+                            "end": 1560988800,
+                            "gmtoffset": -14400
+                        }]
+                    ],
+                    "regular": [
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560778200,
+                            "end": 1560801600,
+                            "gmtoffset": -14400
+                        }],
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560864600,
+                            "end": 1560888000,
+                            "gmtoffset": -14400
+                        }],
+                        [{
+                            "timezone": "EDT",
+                            "start": 1560951000,
+                            "end": 1560974400,
+                            "gmtoffset": -14400
+                        }]
+                    ]
+                },
+                "dataGranularity": "1m",
+                "validRanges": ["1d", "5d", "1mo", "3mo", "6mo", "1y", "2y", "5y", "10y", "ytd", "max"]
+            },
+            "timestamp": [1560808560, 1560864600],
+            "indicators": {
+                "quote": [{
+                    "high": [26112.53, 26277.060546875],
+                    "low": [26112.53, 26227.759765625],
+                    "open": [26112.53, 26228.880859375],
+                    "volume": [0, 0, 1592050, 950178],
+                    "close": [26112.53, 26265.099609375]
+                }]
+            }
+        }],
+        "error": null
+    }
+}

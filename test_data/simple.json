@@ -49,5 +49,15 @@
                 "title": "Everyday Spanish"
             }]
         }
-    ]
+    ],
+    "cycle-5": {
+        "allbooks": [{
+            "titles": [
+                "Everyday Norwegian", 
+                "Everyday French",
+                 "Everyday Spanish"
+            ]
+        }]
+    }
+
 }

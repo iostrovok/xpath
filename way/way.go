@@ -1,11 +1,11 @@
 package way
 
 import (
-	// "fmt"
+	"encoding/json"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
-	// log "github.com/sirupsen/logrus"
 )
 
 var ComputesOperator string = "|"
@@ -31,14 +31,15 @@ func init() {
 type RuleFunc func(int, interface{}) bool
 
 type Way struct {
-	Paths     []*Step
-	LastI, I  int
-	searchAny bool
+	Paths     []*Step `json:"Paths"`
+	LastI     int     `json:"LastI"`
+	I         int     `json:"I"`
+	searchAny bool    `json:"searchAny"`
 }
 
 type Step struct {
-	Index []int
-	Path  string
+	Index []int  `json:"Index"`
+	Path  string `json:"Path"`
 }
 
 func (s *Step) Clone() *Step {
@@ -46,6 +47,16 @@ func (s *Step) Clone() *Step {
 		Index: s.Index,
 		Path:  s.Path,
 	}
+}
+
+func (w *Way) Dump() string {
+
+	b, err := json.Marshal(w)
+	if err != nil {
+		log.Fatal("error:", err)
+	}
+
+	return string(b)
 }
 
 func extractRule(path, key string) (RuleFunc, bool) {
