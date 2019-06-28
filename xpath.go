@@ -1,8 +1,6 @@
 package xpath
 
 import (
-	"fmt"
-
 	"github.com/iostrovok/xpath/allnodes"
 	"github.com/iostrovok/xpath/convert"
 	"github.com/iostrovok/xpath/way"
