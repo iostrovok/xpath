@@ -127,23 +127,24 @@ func (s *testPG) TestBook01(c *C) {
 
 func (s *testPG) TestBook02(c *C) {
 	// c.Skip("no reason")
-	xp := load(c, file1)
+
 	expected := []interface{}{"Everyday Italian"}
 	path := "/bookstore/book[0]/title/value"
+
+	xp := load(c, file1)
 	res, err := xp.Get(path)
 	c.Assert(err, IsNil)
 	c.Assert(res, NotNil)
-
-	fmt.Printf("\n\nTestBook02. res: %+v\n\n", res)
-
 	c.Assert(res, DeepEquals, expected)
 }
 
 func (s *testPG) TestBook03(c *C) {
-	c.Skip("no reason")
-	xp := load(c, file1)
+	c.Skip("/bookstore/book[price>35]/title/value")
+
 	expected := []interface{}{"XQuery Kick Start", "Learning XML"}
 	path := "/bookstore/book[price>35]/title/value"
+
+	xp := load(c, file1)
 	res, err := xp.Get(path)
 	c.Assert(err, IsNil)
 	c.Assert(res, NotNil)
@@ -153,14 +154,73 @@ func (s *testPG) TestBook03(c *C) {
 	c.Assert(res, DeepEquals, expected)
 }
 
-/*
+func (s *testPG) TestBook04(c *C) {
+	c.Skip("//title/value | //price...")
 
-func (s *testPG) TestSimple03(c *C) {
-	c.Skip("skip")
+	paths := []string{
+		"//title/value | //price",
+		"//book/title/value | //book/price",
+		"/bookstore/book/title/value | //price",
+	}
+	expected := []interface{}{
+		"Everyday Italian",
+		30.00,
+		"Harry Potter",
+		29.99,
+		"XQuery Kick Start",
+		49.99,
+		"Learning XML",
+		39.95,
+	}
 
-	xp := load(c)
-	path := "/bookstore/book/price[text()]"
-	c.Assert(xp.Get(path), DeepEquals, []float64{30.00, 29.99, 49.99, 39.95})
-	c.Assert(xp.First(path), DeepEquals, 30.00)
+	xp := load(c, file1)
+
+	for _, path := range paths {
+		res, err := xp.Get(path)
+		c.Assert(err, IsNil)
+		c.Assert(res, NotNil)
+
+		c.Assert(res, DeepEquals, expected)
+	}
 }
-*/
+
+func (s *testPG) TestBook05(c *C) {
+	c.Skip("//title/value | //price...")
+
+	path := "//*"
+
+	expected := []interface{}{
+		"Everyday Italian",
+		"Giada De Laurentiis",
+		2005,
+		30.00,
+
+		"Harry Potter",
+		"J K. Rowling",
+		2005,
+		29.99,
+
+		"XQuery Kick Start",
+		"James McGovern",
+		"Per Bothner",
+		"Kurt Cagle",
+		"James Linn",
+		"Vaidyanathan Nagarajan",
+		2003,
+		49.99,
+
+		"Learning XML",
+		"Erik T. Ray",
+		2003,
+		39.95,
+	}
+
+	xp := load(c, file1)
+
+	res, err := xp.Get(path)
+	c.Assert(err, IsNil)
+	c.Assert(res, NotNil)
+
+	c.Assert(res, DeepEquals, expected)
+
+}

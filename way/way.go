@@ -1,12 +1,20 @@
 package way
 
 import (
-	"fmt"
+	// "fmt"
 	"regexp"
 	"strconv"
 	"strings"
 	// log "github.com/sirupsen/logrus"
 )
+
+var ComputesOperator string = "|"
+
+var Operators []string = []string{
+	"+", "-", "*", "div", "mod",
+	"!=", ">", "=", "<", ">=", "<=",
+	"and", "or",
+}
 
 var re, reDigital, reBool *regexp.Regexp
 
@@ -127,8 +135,6 @@ func New(path string) ([]*Way, error) {
 }
 
 func (w *Way) NextBy(i int) (string, bool) {
-
-	fmt.Printf("NextBy: %d >= %d\n", i, w.LastI)
 
 	if i > w.LastI {
 		return "", false

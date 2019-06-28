@@ -41,8 +41,6 @@ func (xpath XPath) Get(path string) (interface{}, error) {
 	if len(ways) == 1 {
 		res, _ := xpath._get(xpath.Data, ways[0], 0)
 
-		fmt.Printf("Get: res: %+v\n", res)
-
 		return res, nil
 	}
 
