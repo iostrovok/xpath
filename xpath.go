@@ -1,7 +1,7 @@
 package xpath
 
 import (
-	"fmt"
+	// "fmt"
 
 	"github.com/iostrovok/xpath/allnodes"
 	"github.com/iostrovok/xpath/convert"
@@ -38,14 +38,14 @@ func (xpath XPath) Get(path string) (interface{}, error) {
 		return nil, err
 	}
 
-	fmt.Printf("Get. Ways: Dump: %+v\n", ways[0].Dump())
-	fmt.Printf("len(ways): %d\n", len(ways))
+	// fmt.Printf("Get. Ways: Dump: %+v\n", ways[0].Dump())
+	// fmt.Printf("len(ways): %d\n", len(ways))
 
 	if len(ways) == 1 {
 		res, isArray := xpath._get(xpath.Data, ways[0], 0)
 
-		fmt.Printf("Get: isArray: %t\n", isArray)
-		fmt.Printf("Get: res: %+v\n", res)
+		// fmt.Printf("Get: isArray: %t\n", isArray)
+		// fmt.Printf("Get: res: %+v\n", res)
 
 		return res, nil
 	}
@@ -92,7 +92,7 @@ func (xpath XPath) _get(data interface{}, way *way.Way, currentI int) (result in
 
 	result = nil
 	isArray = false
-	fmt.Printf("_get. Ways: Dump: %+v\n", way.Dump())
+	// fmt.Printf("_get. Ways: Dump: %+v\n", way.Dump())
 
 	findPath, findIteration := way.NextBy(currentI)
 
