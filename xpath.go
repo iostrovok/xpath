@@ -42,7 +42,7 @@ func (xpath XPath) Get(path string) (interface{}, error) {
 	// fmt.Printf("len(ways): %d\n", len(ways))
 
 	if len(ways) == 1 {
-		res, isArray := xpath._get(xpath.Data, ways[0], 0)
+		res, _ := xpath._get(xpath.Data, ways[0], 0)
 
 		// fmt.Printf("Get: isArray: %t\n", isArray)
 		// fmt.Printf("Get: res: %+v\n", res)
